@@ -111,6 +111,7 @@ export default class SnapshotState {
   match(testName: string, received: any, key?: string) {
     this._counters.set(testName, (this._counters.get(testName) || 0) + 1);
     const count = Number(this._counters.get(testName));
+    const name = key;
 
     if (!key) {
       key = testNameToKey(testName, count);
@@ -165,7 +166,7 @@ export default class SnapshotState {
         actual: '',
         count,
         expected: '',
-        name: key,
+        name,
         pass: true,
       };
     } else {
@@ -175,7 +176,7 @@ export default class SnapshotState {
           actual: unescape(receivedSerialized),
           count,
           expected: expected ? unescape(expected) : null,
-          name: key,
+          name,
           pass: false,
         };
       } else {
@@ -184,7 +185,7 @@ export default class SnapshotState {
           actual: '',
           count,
           expected: '',
-          name: key,
+          name,
           pass: true,
         };
       }
