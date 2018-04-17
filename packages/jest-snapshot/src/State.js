@@ -111,7 +111,7 @@ export default class SnapshotState {
   match(testName: string, received: any, key?: string) {
     this._counters.set(testName, (this._counters.get(testName) || 0) + 1);
     const count = Number(this._counters.get(testName));
-    const name = key;
+    const name = testName;
 
     if (!key) {
       key = testNameToKey(testName, count);
